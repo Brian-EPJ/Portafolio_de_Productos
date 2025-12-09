@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio de Brian Pradenas - Desarrollador Web Java, Spring Boot, API REST">
+    <meta name="author" content="Brian Pradenas">
+    <title>Portafolio - Brian Pradenas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding-top: 70px;
+            scroll-behavior: smooth;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            padding: 60px 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            animation: fadeInDown 1s ease;
+        }
+
+        header .lead {
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        }
+
+        /* Cards */
+        .card {
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        /* Lista de habilidades */
+        .skills-colored {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .skills-colored li {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        .skills-colored li:hover {
+            background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
+            transform: translateX(5px);
+        }
+
+        .skills-colored .icon {
+            margin-right: 12px;
+            font-size: 1.3rem;
+            color: #667eea;
+        }
+
+        /* Proyectos */
+        .project-card {
+            height: 100%;
+            border-left: 5px solid #667eea;
+        }
+
+        .project-card h5 {
+            color: #667eea;
+        }
+
+        /* Enlaces */
+        a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* Botón scroll to top */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        #scrollTopBtn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        #scrollTopBtn i {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 80px;
+            box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+        }
+
+        footer .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        footer .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Secciones */
+        section {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Botones */
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .skills-colored {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            <i class="bi bi-code-slash"></i> Brian Pradenas
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#about"><i class="bi bi-person"></i> Sobre mí</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills"><i class="bi bi-gear"></i> Habilidades</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects"><i class="bi bi-folder"></i> Proyectos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact"><i class="bi bi-envelope"></i> Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <div class="container">
+        <h1>Brian Pradenas</h1>
+        <p class="lead">Desarrollador Full Stack | Java · API REST · Spring Boot · MySQL</p>
+    </div>
+</header>
+
+<main class="container my-5">
+
+    <!-- Sobre mí -->
+    <section id="about" class="mb-5">
+        <div class="card p-4">
+            <h2 class="section-title">Sobre mí</h2>
+            <div class="row mt-4">
+                <div class="col-lg-8">
+                    <h4 class="text-primary mb-3"><i class="bi bi-person-circle"></i> ¿Quién soy?</h4>
+                    <p>
+                        Soy <strong>Brian Pradenas</strong>, un desarrollador Full Stack en formación apasionado por la tecnología y el desarrollo de software.
+                        Mi enfoque principal está en el desarrollo backend con Java, donde disfruto construyendo aplicaciones robustas,
+                        escalables y eficientes que resuelven problemas reales.
+                    </p>
+
+                    <h4 class="text-primary mb-3 mt-4"><i class="bi bi-briefcase"></i> Experiencia y Formación</h4>
+                    <p>
+                        Cuento con experiencia práctica en el desarrollo de aplicaciones web utilizando el ecosistema Java,
+                        incluyendo <strong>Spring Boot</strong> para crear APIs REST y aplicaciones web con Thymeleaf, <strong>JPA/Hibernate</strong> para la persistencia de datos,
+                        y <strong>Jakarta EE</strong> para aplicaciones empresariales. He trabajado en proyectos que van desde sistemas de gestión de bibliotecas
+                        hasta sitios web dinámicos para bandas de música.
+                    </p>
+                    <p>
+                        Mi formación incluye el manejo de bases de datos relacionales con <strong>MySQL</strong>, diseño de modelos de datos,
+                        y la implementación de arquitecturas MVC. Además, tengo conocimientos en tecnologías frontend como HTML, CSS y JavaScript
+                        para crear interfaces funcionales y atractivas. Utilizo <strong>IntelliJ IDEA</strong> como mi IDE principal y <strong>Git</strong> para control de versiones.
+                    </p>
+
+                    <h4 class="text-primary mb-3 mt-4"><i class="bi bi-bullseye"></i> Objetivo Profesional</h4>
+                    <p>
+                        Mi objetivo es continuar creciendo como desarrollador Full Stack, especializándome en tecnologías Java
+                        y frameworks modernos. Busco oportunidades donde pueda aportar valor mediante la creación de soluciones innovadoras,
+                        trabajar en equipo con otros profesionales y seguir aprendiendo las mejores prácticas de la industria.
+                    </p>
+                    <p>
+                        Aspiro a formar parte de proyectos desafiantes donde pueda aplicar mis conocimientos técnicos,
+                        contribuir al éxito del equipo y desarrollar software de calidad que impacte positivamente a los usuarios.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card bg-light border-0 p-3 mt-4 mt-lg-0">
+                        <h5 class="text-primary mb-3"><i class="bi bi-star"></i> Destacados</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Desarrollo Backend Java</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> API REST con Spring Boot</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Bases de datos relacionales</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Arquitectura MVC</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Control de versiones Git</li>
+                        </ul>
+
+                        <h5 class="text-primary mb-3 mt-4"><i class="bi bi-heart"></i> Intereses</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi bi-code-slash text-primary me-2"></i> Desarrollo de software</li>
+                            <li class="mb-2"><i class="bi bi-laptop text-primary me-2"></i> Nuevas tecnologías</li>
+                            <li class="mb-2"><i class="bi bi-book text-primary me-2"></i> Aprendizaje continuo</li>
+                            <li class="mb-2"><i class="bi bi-puzzle text-primary me-2"></i> Resolución de problemas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="skills" class="mb-5">
+        <div class="card p-4">
+            <h2 class="section-title">Habilidades</h2>
+            <ul class="skills-colored mt-4 list-unstyled">
+                <li><span class="icon"><i class="bi bi-link-45deg"></i></span> Creación y consumo de API REST</li>
+                <li><span class="icon"><i class="bi bi-circle-fill"></i></span> Spring Boot (Controladores, Servicios, Repositorios)</li>
+                <li><span class="icon"><i class="bi bi-box"></i></span> JPA / Hibernate (ORM, consultas, relaciones)</li>
+                <li><span class="icon"><i class="bi bi-shop"></i></span> Jakarta EE (Servlets, JSP, MVC)</li>
+                <li><span class="icon"><i class="bi bi-database"></i></span> MySQL y modelado de bases de datos</li>
+                <li><span class="icon"><i class="bi bi-laptop"></i></span> IntelliJ IDEA como IDE principal</li>
+                <li><span class="icon"><i class="bi bi-globe"></i></span> HTML, CSS y JavaScript</li>
+                <li><span class="icon"><i class="bi bi-git"></i></span> Control de versiones con Git</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="projects" class="mb-5">
+        <h2 class="section-title mb-4">Proyectos</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card project-card p-4">
+                    <h5 class="card-title"><i class="bi bi-book"></i> Sistema de Biblioteca</h5>
+                    <p class="card-text">Aplicación web de gestión de autores y libros, desarrollada con Spring Boot, Thymeleaf, JPA y MySQL. Permite crear, leer, editar autores y sus libros asociados mediante una interfaz web.</p>
+                    <div class="mt-auto">
+                        <a href="https://github.com/Brian-EPJ/Biblioteca" class="btn btn-custom btn-sm" target="_blank">
+                            <i class="bi bi-github"></i> Ver código
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card project-card p-4">
+                    <h5 class="card-title"><i class="bi bi-music-note-beamed"></i> Web Banda de Metal</h5>
+                    <p class="card-text">Sitio web dinámico desarrollado con Spring Boot, Thymeleaf, JPA y MySQL. Incluye gestión de contenido y diseño adaptado a la identidad visual de la banda.</p>
+                    <div class="mt-auto">
+                        <a href="https://github.com/Brian-EPJ/banda_musica" class="btn btn-custom btn-sm" target="_blank">
+                            <i class="bi bi-github"></i> Ver código
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card project-card p-4">
+                    <h5 class="card-title"><i class="bi bi-cart"></i> API de Productos</h5>
+                    <p class="card-text">API REST desarrollada en Spring Boot con endpoints completos para la gestión de productos. Implementa operaciones CRUD y buenas prácticas de desarrollo backend.</p>
+                    <div class="mt-auto">
+                        <a href="https://github.com/Brian-EPJ/M6_Evaluacion" class="btn btn-custom btn-sm" target="_blank">
+                            <i class="bi bi-github"></i> Ver código
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contact" class="mb-5">
+        <div class="card p-4">
+            <h2 class="section-title">Contacto</h2>
+            <div class="mt-4">
+                <p><i class="bi bi-envelope-fill text-primary me-2"></i> Email: <strong>br.pradenas@gmail.com</strong></p>
+                <p><i class="bi bi-github text-dark me-2"></i> GitHub: <a href="https://github.com/Brian-EPJ/Portafolio-General" target="_blank">github.com/brianpradenas</a></p>
+                <p><i class="bi bi-linkedin text-primary me-2"></i> LinkedIn: <a href="https://www.linkedin.com/in/brian-pradenas-jaramillo-ab0570262/" target="_blank">linkedin.com/in/brianpradenas</a></p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Botón Scroll to Top -->
+<button id="scrollTopBtn" title="Volver arriba">
+    <i class="bi bi-arrow-up"></i>
+</button>
+
+<footer>
+    <div class="container">
+        <div class="social-links mb-3">
+            <a href="https://github.com/Brian-EPJ/Portafolio-General" target="_blank" title="GitHub">
+                <i class="bi bi-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/brian-pradenas-jaramillo-ab0570262/" target="_blank" title="LinkedIn">
+                <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="mailto:br.pradenas@gmail.com" title="Email">
+                <i class="bi bi-envelope"></i>
+            </a>
+        </div>
+        <p class="mb-0">&copy; 2025 Brian Pradenas. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script para el botón scroll to top -->
+<script>
+    // Mostrar/ocultar botón según scroll
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.style.display = 'flex';
+        } else {
+            scrollTopBtn.style.display = 'none';
+        }
+    });
+
+    // Scroll suave al hacer clic
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Cerrar navbar en móvil al hacer clic en un enlace
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+            }
+        });
+    });
+</script>
+</body>
+</html>
